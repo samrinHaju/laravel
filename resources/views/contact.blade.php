@@ -1,4 +1,4 @@
 @extends('layout')
-@section('content')
+@section('content1')
 <h1>Contact us!!</h1>
-@endsection('content')
+@endsection('content1')
