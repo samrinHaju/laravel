@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeBlogpostsTableName extends Migration
+class AddTitleContentToBlogpostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class ChangeBlogpostsTableName extends Migration
      */
     public function up()
     {
-        Schema::rename('blogposts', 'blog_posts'); 
+        Schema::table('blogposts', function (Blueprint $table) {
+            $table->string('title');
+            $table->text('content');
+        });
     }
 
     /**
@@ -23,6 +26,8 @@ class ChangeBlogpostsTableName extends Migration
      */
     public function down()
     {
-        Schema::rename('blog_posts', 'blogposts');
+        Schema::table('blogposts', function (Blueprint $table) {
+            $table->dropColumn(['title','content']);
+        });
     }
 }

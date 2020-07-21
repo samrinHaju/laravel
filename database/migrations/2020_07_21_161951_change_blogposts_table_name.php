@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogpostTable extends Migration
+class ChangeBlogpostsTableName extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class CreateBlogpostTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogpost', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::rename('blogposts','blog_posts');
     }
 
     /**
@@ -26,6 +23,6 @@ class CreateBlogpostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogpost');
+        Schema::rename('blog_posts','blogposts');
     }
 }
