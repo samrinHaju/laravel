@@ -11,9 +11,7 @@
             <a href = "{{ route('home') }}">Home</a>
         </li>
         <li><a href = "{{ route('contact') }}">contact</a></li>
-        <li>
-            <a href = "{{ route('blog-post',['id' => 1]) }}">Blog Post</a>
-        </li>
+        <li><a href = "{{ route('posts.index') }}">Blog Post</a></li>
 
     </ul>
    @yield('content1') 
