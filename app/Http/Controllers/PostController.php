@@ -22,8 +22,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $request->session()->reflash();
         return view('posts.show',['posts' => BlogPost::find($id)]);
 
     }
@@ -33,9 +34,11 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        $title = $request->input('title');
-        $content = $request -> input('content');
-
-        dd($title,$content);
+        $blogPost = new BlogPost();
+        $blogPost->title = $request->input('title');
+        $blogPost->content = $request -> input('content');
+        $blogPost->save();
+        $request->session()->flash('$blogPost->content','logged in!!');
+        return redirect()->route('posts.show',['post'=> $blogPost->id]);
     }
 }

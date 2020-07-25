@@ -14,6 +14,12 @@
         <li><a href = "{{ route('posts.index') }}">Blog Post</a></li>
         <li><a href = "{{ route('posts.create') }}">Add Blog Post</a></li>
 
+        @if(session()->has('$blogPost->content'))
+            <p style="color:green">
+                {{session()->get('$blogPost->content')}}
+                
+            </p>
+        @endif 
     </ul>
    @yield('content1') 
 </body>
