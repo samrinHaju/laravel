@@ -24,6 +24,18 @@ class PostController extends Controller
      */
     public function show($id)
     {
-       dd(BlogPost::find($id));
+        return view('posts.show',['posts' => BlogPost::find($id)]);
+
+    }
+
+    public function create(){
+        return view('posts.create');
+    }
+
+    public function store(Request $request){
+        $title = $request->input('title');
+        $content = $request -> input('content');
+
+        dd($title,$content);
     }
 }
