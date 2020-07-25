@@ -12,6 +12,7 @@
         </li>
         <li><a href = "{{ route('contact') }}">contact</a></li>
         <li><a href = "{{ route('posts.index') }}">Blog Post</a></li>
+        
 
     </ul>
    @yield('content1') 
