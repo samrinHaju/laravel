@@ -34,11 +34,17 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+
+        $validatedDate = $request->validate([
+            'title'=>'bail|required|max:100|min:5',
+            'content'=>'required|min:10'
+        ]);
+
         $blogPost = new BlogPost();
         $blogPost->title = $request->input('title');
         $blogPost->content = $request -> input('content');
         $blogPost->save();
-        $request->session()->flash('$blogPost->content','logged in!!');
+        $request->session()->flash('$blogPost->content');
         return redirect()->route('posts.show',['post'=> $blogPost->id]);
     }
 }
