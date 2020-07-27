@@ -37,8 +37,8 @@ class PostController extends Controller
 
         $validatedData = $request->validated();
        
-        $blogPost = BlogPost::create($validatedData);
-        $request->session()->flash('$blogPost->content');
+        $blogPost = BlogPost::create($validatedData);       //use to create new entry in database
+        $request->session()->flash('$blogPost->content','blog Post was added');
         return redirect()->route('posts.show',['post'=> $blogPost->id]);
     }
 
@@ -47,7 +47,13 @@ class PostController extends Controller
         return view ('posts.edit',['post' => $post]);
     }
 
-    public function update(){
+    public function update(StorePost $request,$id){
+        $post = BlogPost::findOrFail($id);
+        $validatedData = $request->validated();
 
+        $post->fill($validatedData);                        //used for updating the database
+        $post->save();                                      // save the chnages into the database 
+        $request->session()->flash('$blogPost->content','Blog Post was updated');
+        return redirect()->route('posts.show',['post'=> $post->id]);
     }
 }

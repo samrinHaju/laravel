@@ -16,7 +16,7 @@
 
         @if(session()->has('$blogPost->content'))
             <p style="color:green">
-                {{session()->get('$blogPost->content')}}you are logged in!!
+                {{session()->get('$blogPost->content')}}
                 
             </p>
         @endif 
