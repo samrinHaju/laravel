@@ -4,12 +4,12 @@
     @csrf
     <p>
         <label for="">title</label>
-        <input type="text" name="title"/>
+        <input type="text" name="title" value="{{ old('title') }}"/>
     </p>
 
     <p>
         <label for="">content</label>
-        <input type="text" name="content"/>
+        <input type="text" name="content" value="{{ old('content') }}"/>
     </p>
     @if($errors->any())
         <div>

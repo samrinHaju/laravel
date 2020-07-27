@@ -13,7 +13,7 @@ class StorePost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'bail|required|max:100|min:5',
+            'content'=>'required|min:10'
         ];
     }
 }
