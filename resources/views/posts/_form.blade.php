@@ -1,7 +1,7 @@
 <p>
         <label for="">title</label>
         <input type="text" name="title" 
-        value="{{ old('title',$post->title ?? null) }}"/> // coalescing operater used for updating
+        value="{{ old('title',$post->title ?? null) }}"/>           <!-- coalescing operater(?? null) used for updating -->
     </p>
 
     <p>
