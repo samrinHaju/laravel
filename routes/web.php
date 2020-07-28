@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::resource('/posts','PostController')->except(['destroy']);
+Route::resource('/posts','PostController');
 
 
 
